@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex_Stopwatch", "Ex_Stopwatch.csproj", "{9EAF27AB-9CE6-40E9-8A06-2C008443CE70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex_StopwatchTest", "Ex_StopwatchTest\Ex_StopwatchTest.csproj", "{32B963BC-31BA-4000-8421-94115C165138}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EAF27AB-9CE6-40E9-8A06-2C008443CE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EAF27AB-9CE6-40E9-8A06-2C008443CE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EAF27AB-9CE6-40E9-8A06-2C008443CE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EAF27AB-9CE6-40E9-8A06-2C008443CE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B963BC-31BA-4000-8421-94115C165138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B963BC-31BA-4000-8421-94115C165138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B963BC-31BA-4000-8421-94115C165138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B963BC-31BA-4000-8421-94115C165138}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3CC265F-912B-4881-9340-7CF49E31EE13}
+	EndGlobalSection
+EndGlobal
