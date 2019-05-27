@@ -65,6 +65,5 @@ namespace Ex_Stopwatch
 			EndTime = DateTime.MinValue;
 			IsRunning = false;
 		}
-
 	}
 }
