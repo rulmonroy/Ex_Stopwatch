@@ -121,24 +121,40 @@ namespace Ex_StopwatchTest
 			_stopwatch.Start();
 
 			// Wait for 3 seconds and stop
-			var startTime1 = _stopwatch.StartTime;
-			var endTime1 = startTime1.AddSeconds(3);
-			while (DateTime.UtcNow <= endTime1) { }
-			_stopwatch.Stop();
-			Assert.That(_stopwatch.Elapsed.Seconds, Is.EqualTo(3));
+			PauseStopwatchAfterSeconds(3);
+			AssertElapsedSeconds(3);
 
 			// Wait for 2 seconds and start
-			var startTime2 = endTime1.AddSeconds(2);
-			while (DateTime.UtcNow <= startTime2) { }
+			System.Threading.SpinWait.SpinUntil(() => false, 2000);
 			_stopwatch.Start();
-			Assert.That(_stopwatch.StartTime.Minute, Is.EqualTo(startTime2.Minute));
-			Assert.That(_stopwatch.StartTime.Second, Is.EqualTo(startTime2.Second));
+			AssertEqualTimes(_stopwatch.StartTime, DateTime.UtcNow);
 
 			// Wait for 2 more seconds and stop again
-			var endTime2 = startTime2.AddSeconds(2);
-			while (DateTime.UtcNow <= endTime2) { }
+			PauseStopwatchAfterSeconds(2);
+			AssertElapsedSeconds(5);
+		}
+
+		void PauseStopwatchAfterSeconds(int seconds)
+		{
+			var startTime = _stopwatch.StartTime;
+			var endTime = startTime.AddTicks(TimeSpan.TicksPerSecond * seconds);
+			System.Threading.SpinWait.SpinUntil(() => DateTime.UtcNow >= endTime);
 			_stopwatch.Stop();
-			Assert.That(_stopwatch.Elapsed.Seconds, Is.EqualTo(5));
+		}
+
+		void AssertElapsedSeconds(int seconds)
+		{
+			var expectedTicks = TimeSpan.TicksPerSecond * seconds;
+			var tolerance = 50000;
+			var elapsedTicks = Math.Abs(_stopwatch.Elapsed.Ticks - expectedTicks);
+			Assert.That(elapsedTicks, Is.LessThanOrEqualTo(tolerance));
+		}
+
+		void AssertEqualTimes(DateTime d1, DateTime d2)
+		{
+			var difference = Math.Abs(d1.Ticks - d2.Ticks);
+			var tolerance = 50000;
+			Assert.That(difference, Is.LessThanOrEqualTo(tolerance));
 		}
 
 		#endregion
